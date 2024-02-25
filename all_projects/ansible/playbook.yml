@@ -1,0 +1,17 @@
+---
+- name: Install nginx and index
+  hosts: localhost
+  become: true
+  become_method: su
+  
+  tasks:
+  - name: install nginx
+    apt:
+      name: nginx
+      state: present
+      
+  - name: copy index
+    copy:
+      src: index.html
+      dest: /var/www/html/index.nginx-debian.html
+      mode: '0644'
