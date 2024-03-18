@@ -1,0 +1,16 @@
+---
+- name: Install nginx with virtual Hosts
+  hosts: webservers
+  remote_user: alex
+  become: true
+  become_method: sudo
+  gather_facts: no
+
+  vars:
+    sites:
+    - "room.ru"
+    - "gedit.com"
+    - "firebird.ru"
+
+  roles:
+  - nginx-vhosts
